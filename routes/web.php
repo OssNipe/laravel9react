@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +32,11 @@ Route::get('/dashboard', function () {
 Route::get('/TutorComponent', function () {
     return Inertia::render('TutorComponent');
 })->name('TutorComponent');
-
+Route::get('/BecomTutor', function () {
+    return Inertia::render('BecomTutor', [
+        'userId' => auth()->id() // Retrieve the logged-in user's ID
+    ]);
+})->middleware(['auth', 'verified'])->name('BecomTutor');
 
 
 Route::middleware('auth')->group(function () {

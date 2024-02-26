@@ -12,7 +12,7 @@ export default function TutorsList() {
 
     const fetchTutors = async () => {
         try {
-            const response = await axios.get('api/tutors');
+            const response = await axios.get('api/tutor_ads');
             setTutors(response.data);
         } catch (error) {
             console.error('Error fetching tutors:', error);
@@ -20,15 +20,7 @@ export default function TutorsList() {
     };
     
 
-    const deleteTutors = async (id) => {
-        await axios.delete('sapi/tutors/' + id)
-            .then(({ data }) => {
-                console.log(data.message)
-                fetchTutors();
-            }).catch(({ response: { data } }) => {
-                console.log(data.message)
-            })
-    }
+
 
    
 
@@ -55,8 +47,14 @@ export default function TutorsList() {
                                     Tutors.length > 0 && (
                                         Tutors.map((row,key)=>(
                                             <tr key={key}> 
-                                                <td>{row.nometprenom}</td>
-                                                <td>{row.description}</td>
+                                                <td>{row.advert_title}</td>
+                                                <td>{row.lessons_taught}</td>
+                                                <td>{row.about_lessons}</td>
+                                                <td>{row.about_you}</td>
+                                                <td>{row.location}</td>
+                                                <td>{row.location_preference}</td>
+                                                <td>{row.levels}</td>
+                                                <td>{row.hourly_rate}</td>
                                         
                                             </tr> 
                                         ))

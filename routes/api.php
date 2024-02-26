@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\BrotherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TutorController;
-
+use App\Http\Controllers\TutorAdController;
+use App\Models\User; // Import the User model
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,7 +17,9 @@ use App\Http\Controllers\TutorController;
 |
 */
 
-Route::resource('tutors', TutorController::class);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('tutors', TutorController::class);
+Route::post('/brother', [BrotherController::class, 'store']);

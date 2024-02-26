@@ -19,7 +19,9 @@ Home</Link></li>
         <li>  <Link href={route('TutorComponent')}>
     Find a Tutor
 </Link></li>
-        <li><a href="#">Become a tutor</a></li>
+        <li><Link href={route('BecomTutor')}>
+    Become a Tutor
+</Link></li>
 
         <>
           <li>
