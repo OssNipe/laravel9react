@@ -12,7 +12,7 @@ export default function TutorsList() {
 
     const fetchTutors = async () => {
         try {
-            const response = await axios.get('api/tutor_ads');
+            const response = await axios.get('api/brother');
             setTutors(response.data);
         } catch (error) {
             console.error('Error fetching tutors:', error);

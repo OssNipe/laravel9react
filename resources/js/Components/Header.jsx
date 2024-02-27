@@ -1,10 +1,10 @@
 import React from 'react';
 import Navbar from './Navbar';
 import "../../css/index.css"
-function Header() {
+function Header(props) {
   return (
     <div className='header'>
-<Navbar />
+<Navbar {...props} />
 
         <div className="intro">
             <p>Looking for a tutor !</p>

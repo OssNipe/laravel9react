@@ -14,7 +14,7 @@ class BrotherController extends Controller
      */
     public function index()
     {
-        return Brother::select('id', 'advert_title', 'lessons_taught', 'about_lessons', 'about_you', 'location', 'location_preference', 'levels', 'hourly_rate')->get();
+        return Brother::select('id', 'advert_title', 'lessons_taught', 'about_lessons', 'about_you', 'location', 'location_preference', 'levels', 'hourly_rate', 'user_id')->get();
     }
 
     /**
