@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-export default function TutorsList() {
+import AppLayout from '@/Layouts/AppLayout';
+
+export default function TutorsList(props) {
 
     
 
@@ -27,6 +29,7 @@ export default function TutorsList() {
  
 
     return (
+        <AppLayout{...props}>
         <div className="container">
             <div className="row">
                 <div className="conl-12">
@@ -72,6 +75,7 @@ export default function TutorsList() {
             </div>
 
         </div>
+        </AppLayout>
     )
 
 

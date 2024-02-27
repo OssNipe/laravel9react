@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import AppLayout from '@/Layouts/AppLayout';
+
 import axios from "axios";
 
-const CreateTutorAdForm = ({ userId }) =>  {
+const CreateTutorAdForm = ({ userId , ...props }) =>  {
   const [formData, setFormData] = useState({
     advert_title: "",
     lessons_taught: "",
@@ -34,6 +36,7 @@ const CreateTutorAdForm = ({ userId }) =>  {
   };
 
   return (
+    <AppLayout {...props}>
     <div className="container">
       <h2>Create Tutor Ad</h2>
       <form onSubmit={handleSubmit}>
@@ -138,6 +141,7 @@ const CreateTutorAdForm = ({ userId }) =>  {
         </button>
       </form>
     </div>
+    </AppLayout>
   );
 };
 

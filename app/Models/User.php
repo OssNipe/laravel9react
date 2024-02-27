@@ -41,8 +41,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function tutorAds()
+    public function brothers()
     {
-        return $this->hasMany(TutorAd::class);
+        return $this->hasMany(brother::class);
     }
 }

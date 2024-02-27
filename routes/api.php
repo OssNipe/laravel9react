@@ -21,6 +21,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/users/{id}', function ($id) {
+    $user = User::with('brothers')->findOrFail($id);
+    return response()->json($user);
+});
 Route::resource('tutors', TutorController::class);
 Route::post('/brother', [BrotherController::class, 'store']);
 Route::get('/brother', [BrotherController::class, 'index']);
