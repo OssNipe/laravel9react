@@ -19,4 +19,8 @@ class Brother extends Model
         'hourly_rate',
         'user_id'
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
