@@ -2,7 +2,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import { Auth } from '@inertiajs/inertia-react'; 
 import React, { useState, useEffect } from "react";
-import BecomTutor from '@/Pages/BecomTutor';
+import ProfileCard from '@/Components/ProfileCard';
 
 export default function Dashboard(props) {
    
@@ -18,7 +18,7 @@ export default function Dashboard(props) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     
-                  
+                    <ProfileCard/>
                     </div>
                 </div>
             </div>
