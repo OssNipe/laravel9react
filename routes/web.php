@@ -27,11 +27,24 @@ Route::get('/', function () {
 })->name('Home');
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard', [
+        'userId' => auth()->id() // Retrieve the logged-in user's ID
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/changeImage', function () {
+    return Inertia::render('changeImage', [
+        'userId' => auth()->id() // Retrieve the logged-in user's ID
+    ]);
+})->middleware(['auth', 'verified'])->name('changeImage');
+
 Route::get('/TutorComponent', function () {
     return Inertia::render('TutorComponent');
 })->name('TutorComponent');
+Route::get('/ImageUpload', function () {
+    return Inertia::render('ImageUpload', [
+        'userId' => auth()->id() // Retrieve the logged-in user's ID
+    ]);
+})->middleware(['auth', 'verified'])->name('ImageUpload');
 Route::get('/BecomTutor', function () {
     return Inertia::render('BecomTutor', [
         'userId' => auth()->id() // Retrieve the logged-in user's ID
@@ -40,6 +53,7 @@ Route::get('/BecomTutor', function () {
 
 
 Route::middleware('auth')->group(function () {
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TutorController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserImageController;
 use App\Http\Controllers\TutorAdController;
 use App\Models\User; // Import the User model
 /*
@@ -21,7 +22,11 @@ use App\Models\User; // Import the User model
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/user/{user_id}', [UserController::class, 'show']);
+
+// Route for deleting a user image
+Route::post('/User_image', [UserImageController::class, 'store']);
+
+
 Route::resource('tutors', TutorController::class);
 Route::post('/brother', [BrotherController::class, 'store']);
 Route::get('/brother', [BrotherController::class, 'index']);
