@@ -45,8 +45,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(brother::class);
     }
-    public function images()
+    public function userImage()
     {
-        return $this->hasMany(UserImage::class);
+        return $this->hasOne(UserImage::class);
     }
 }

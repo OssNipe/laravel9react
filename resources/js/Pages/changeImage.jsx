@@ -4,6 +4,7 @@ import { Auth } from '@inertiajs/inertia-react';
 import React, { useState, useEffect } from "react";
 import ProfileCard from '@/Components/ProfileCard';
 import ImageUpload from './ImageUpload'
+import Imagedisplay from'@/Components/Imagedisplay';
 
 export default function changeImage(props) {
     
@@ -19,6 +20,7 @@ export default function changeImage(props) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <ImageUpload userId={props.userId} />
+                    
                     
                     </div>
                 </div>

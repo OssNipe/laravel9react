@@ -24,9 +24,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Route for deleting a user image
-Route::post('/User_image', [UserImageController::class, 'store']);
+Route::post('/user_images', [UserImageController::class, 'store']);
 
 
+Route::get('/user_images/{userId}', [UserImageController::class, 'show']);
 Route::resource('tutors', TutorController::class);
+
 Route::post('/brother', [BrotherController::class, 'store']);
 Route::get('/brother', [BrotherController::class, 'index']);
