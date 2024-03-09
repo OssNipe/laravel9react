@@ -66,12 +66,26 @@ class BrotherController extends Controller
      * @param  \App\Models\Brother  $brother
      * @return \Illuminate\Http\Response
      */
-    public function show(Brother $brother)
+    public function show($userId, $adId)
     {
-        return response()->json([
-            'Brother' => $brother
-        ]);
+        // Fetch brother details associated with the given user_id and ad_id
+        $tutor = Brother::with('user:id,name')->select('id', 'advert_title', 'lessons_taught', 'about_lessons', 'about_you', 'location', 'location_preference', 'levels', 'hourly_rate', 'user_id')
+            ->where('user_id', $userId)
+            ->where('id', $adId)
+            ->first();
+
+        if (!$tutor) {
+            return response()->json(['message' => 'Tutor not found'], 404);
+        }
+
+        // Fetch user's image
+        $userImage = UserImage::where('user_id', $userId)->first();
+        $tutor->user->image_path = $userImage ? $userImage->image_path : null;
+
+        return response()->json($tutor);
     }
+
+
     public function update(Request $request, Brother $brother)
     {
         $request->validate([

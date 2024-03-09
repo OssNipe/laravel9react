@@ -32,6 +32,8 @@ export default function TutorsList(props) {
                             <ProfileCard
                                 key={index}
                                 name={tutor.user.name}
+                                id={tutor.user_id}
+                                AdId={tutor.id}
                                 advertTitle={tutor.advert_title}
                                 lessonsTaught={tutor.lessons_taught}
                                 aboutLessons={tutor.about_lessons}

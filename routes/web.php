@@ -36,7 +36,12 @@ Route::get('/changeImage', function () {
         'userId' => auth()->id() // Retrieve the logged-in user's ID
     ]);
 })->middleware(['auth', 'verified'])->name('changeImage');
-
+Route::get('/Tutordetails/{id}/{adId}', function ($id, $AdId) {
+    return Inertia::render('Tutordetails', [
+        'tutorId' => $id, // Pass the tutor's ID as a parameter
+        'ADid' => $AdId
+    ]);
+})->name('Tutordetails');
 Route::get('/TutorComponent', function () {
     return Inertia::render('TutorComponent');
 })->name('TutorComponent');

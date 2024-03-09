@@ -2,9 +2,11 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import "../../css/Profile.css";
+import { Link } from '@inertiajs/react';
 
-function ProfileCard({ name, location, lessonsTaught, hourlyRate, advertTitle, aboutYou, imagePath }) {
+function ProfileCard({ name, id ,AdId,location, lessonsTaught, hourlyRate, advertTitle, aboutYou, imagePath }) {
   return (
+    <Link href={`/Tutordetails/${id}/${AdId}`}>
     <div className="profile-card">
       <div className="profile-image">
         {imagePath && <img src={`http://localhost:8000/storage/${imagePath}`} alt="de profil" />}
@@ -19,7 +21,11 @@ function ProfileCard({ name, location, lessonsTaught, hourlyRate, advertTitle, a
         <p className="para">{advertTitle}</p>
         <p className="p1">{aboutYou}</p>
       </div>
+      
+                                   
+                            
     </div>
+    </Link>
   );
 }
 

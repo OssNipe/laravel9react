@@ -1,54 +1,43 @@
-// ProfileDetail.jsx
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import "../../css/Profile.css";
 
-function ProfileDetail(props) {
-    const [brother, setBrother] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+export default function Tutordetails({ ADid,tutorId }) {
+    const [tutorDetails, setTutorDetails] = useState(null);
 
     useEffect(() => {
-        const fetchBrother = async () => {
-            try {
-                const response = await axios.get(`api/brother/${props.match.params.id}`);
-                setBrother(response.data);
-                setLoading(false);
-            } catch (error) {
-                setError(error.message);
-                setLoading(false);
-            }
-        };
+        fetchTutorDetails();
+    }, [tutorId]); // Add tutorId to the dependency array to refetch tutor details when tutorId changes
 
-        fetchBrother();
-    }, [props.match.params.id]);
+    const fetchTutorDetails = async () => {
+        try {
+            const response = await axios.get(`/api/brother/${tutorId}/${ADid}`); // Fix the API endpoint URL
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
-
-    if (!brother) {
-        return <div>Brother not found</div>;
-    }
+            setTutorDetails(response.data);
+        } catch (error) {
+            console.error('Error fetching tutor details:', error);
+        }
+    };
 
     return (
         <div>
-            <h1>Brother Detail</h1>
-            <h2>Name: {brother.user.name}</h2>
-            <p>Advert Title: {brother.advert_title}</p>
-            <p>Lessons Taught: {brother.lessons_taught}</p>
-            <p>About Lessons: {brother.about_lessons}</p>
-            <p>About You: {brother.about_you}</p>
-            <p>Location: {brother.location}</p>
-            <p>Location Preference: {brother.location_preference}</p>
-            <p>Levels: {brother.levels}</p>
-            <p>Hourly Rate: {brother.hourly_rate}</p>
-            {/* Add more fields as needed */}
+            {tutorDetails && (
+                <div>
+                    <h1>Tutor Details</h1>
+                    <p>Name: {tutorDetails.user.name}</p>
+                    <p>Advert Title: {tutorDetails.advert_title}</p>
+                    <p>Lessons Taught: {tutorDetails.lessons_taught}</p>
+                    <p>About Lessons: {tutorDetails.about_lessons}</p>
+                    <p>About You: {tutorDetails.about_you}</p>
+                    <p>Location: {tutorDetails.location}</p>
+                    <p>Location Preference: {tutorDetails.location_preference}</p>
+                    <p>Levels: {tutorDetails.levels}</p>
+                    <p>Hourly Rate: {tutorDetails.hourly_rate}</p>
+                    <div className="profile-image">
+        {<img src={`http://localhost:8000/storage/${tutorDetails.user.image_path}`} alt="de profil" />}
+      </div>
+                </div>
+            )}
         </div>
     );
 }
-
-export default ProfileDetail;

@@ -32,3 +32,4 @@ Route::resource('tutors', TutorController::class);
 
 Route::post('/brother', [BrotherController::class, 'store']);
 Route::get('/brother', [BrotherController::class, 'index']);
+Route::get('/brother/{userId}/{ADid}', [BrotherController::class, 'show']);
