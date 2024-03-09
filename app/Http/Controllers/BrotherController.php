@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brother;
+use App\Models\UserImage;
 use Illuminate\Http\Request;
 
 class BrotherController extends Controller
@@ -12,9 +13,17 @@ class BrotherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        return Brother::with('user:id,name')->select('id', 'advert_title', 'lessons_taught', 'about_lessons', 'about_you', 'location', 'location_preference', 'levels', 'hourly_rate', 'user_id')->get();
+        $tutors = Brother::with('user:id,name')->select('id', 'advert_title', 'lessons_taught', 'about_lessons', 'about_you', 'location', 'location_preference', 'levels', 'hourly_rate', 'user_id')->get();
+
+        foreach ($tutors as $tutor) {
+            $userImage = UserImage::where('user_id', $tutor->user_id)->first();
+            $tutor->user->image_path = $userImage ? $userImage->image_path : null;
+        }
+
+        return $tutors;
     }
 
     /**
