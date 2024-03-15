@@ -39,12 +39,28 @@ Route::get('/changeImage', function () {
 Route::get('/Tutordetails/{id}/{adId}', function ($id, $AdId) {
     return Inertia::render('Tutordetails', [
         'tutorId' => $id, // Pass the tutor's ID as a parameter
-        'ADid' => $AdId
+        'ADid' => $AdId,
+        'userId' => auth()->id()
     ]);
 })->name('Tutordetails');
 Route::get('/TutorComponent', function () {
-    return Inertia::render('TutorComponent');
+    return Inertia::render('TutorComponent', [
+        'userId' => auth()->id() // Retrieve the logged-in user's ID
+    ]);
 })->name('TutorComponent');
+Route::get('/Navbar', function () {
+    return Inertia::render('Navbar', [
+        'userId' => auth()->id() // Retrieve the logged-in user's ID
+    ]);
+})->name('Navbar');
+Route::get('/lessons', function () {
+    return Inertia::render('lessons', []);
+})->name('lessons');
+Route::get('/Tutor', function () {
+    return Inertia::render('Tutor', [
+        'userId' => auth()->id() // Retrieve the logged-in user's ID
+    ]);
+})->name('Tutor');
 Route::get('/ImageUpload', function () {
     return Inertia::render('ImageUpload', [
         'userId' => auth()->id() // Retrieve the logged-in user's ID
@@ -60,6 +76,7 @@ Route::get('/BecomTutor', function () {
 Route::middleware('auth')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });

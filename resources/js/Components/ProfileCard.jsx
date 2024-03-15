@@ -13,14 +13,17 @@ function ProfileCard({ name, id ,AdId,location, lessonsTaught, hourlyRate, adver
       </div>
       <div className="profile-details">
         <h3 className="h3">{name}</h3>
-        <p className="h2"><FontAwesomeIcon icon={faLocationDot} />{location}</p>
-        <p className="p"><FontAwesomeIcon icon={faPenToSquare} />{lessonsTaught}</p>
-      </div>
-      <h2 className="mad">{hourlyRate}</h2>
-      <div className="container">
+      
+        <p className="p"><FontAwesomeIcon icon={faLocationDot}  style={{  color:'#F13C20' , marginRight: '10px' }}/>{location}</p>
+        <p className="p"><FontAwesomeIcon icon={faPenToSquare}  style={{ color:'#F13C20', marginRight: '10px' }}/>{lessonsTaught}</p>
+        
+        <div className="desc">
         <p className="para">{advertTitle}</p>
-        <p className="p1">{aboutYou}</p>
+        <p className="p1 truncate">{aboutYou.length > 100 ? `${aboutYou.substring(0, 100)}...` : aboutYou}</p>
+        </div>
       </div>
+      <h2 className="mad">{hourlyRate} MAD/H</h2>
+     
       
                                    
                             

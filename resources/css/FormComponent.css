@@ -1,0 +1,96 @@
+.form-container {
+  width: 969px;
+  height: auto;
+ 
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  
+}
+.container{
+  
+  margin-right: 0px;
+}
+.form-container h4 {
+  text-align: left;
+  padding-left: 140px;
+  font-size: large;
+}
+.form-container label span {
+  font-family: Arial, sans-serif; /* Adjusted font family for spans */
+  font-size: 14px;
+}
+
+.form-container p {
+  text-align: left;
+  position: relative;
+  padding-bottom: 15px;
+  padding-left: 140px;
+  padding-top: 30px;
+}
+
+
+.form-container p::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+
+.form-container label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Aligns titles and input fields vertically */
+  text-align: left;
+  padding-left: 20px; /* Adjusted padding */
+  margin-top: 30px;
+  margin-left: 70px;
+ 
+}
+
+.form-row {
+  width: 100%;
+}
+
+.form-container input[type="text"],
+.form-container textarea {
+  width: calc(100% - 150px);
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 80px; /* Add margin-bottom to create space between the button and the form */
+}
+
+.button {
+  background-color: #18099f;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 45px;
+  margin-left: 470px;
+  width: 200px;
+  height: 47px;
+  font-size: large;
+
+}

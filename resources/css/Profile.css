@@ -1,16 +1,23 @@
-/* Profile.css */
-
+body {
+  font-family: "Open Sans", arial, sans-serif;
+}
 .profile-card {
     display: flex;
     align-items: center;
-    border: 2px solid #ccc;
-    border-radius: 8px;
+    
+    border: 2px solid #222020;
     padding: 20px;
     padding-right: 20px;
+   
+    border-radius: 16px;
     background-color: #ffffff;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    height: 200px;
-    width: 900px;
+    height: 270px;
+    width: 1050px;
+    
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
     transition: box-shadow 0.3s ease; 
     position: relative;
 }
@@ -25,13 +32,14 @@
   transition: background-color 0.3s ease; /* Add transition for smooth animation */
 }
 .profile-card:hover{
-  background-color: #f5ede0;
-  cursor:#fbdbaf ;
+  border-color: #F13C20;
+  
 }
   
   .profile-image {
     flex: 0 0 auto;
     margin-right: 20px;
+    margin-bottom: 30px;
   }
   
   .profile-image img {
@@ -46,52 +54,67 @@
   
  
  
+
   
-   .p{
-   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  .p {
+    display: flex; /* Use Flexbox */
+    align-items: center; /* Align items vertically */
     margin-right: 0; /* Adjusted margin */
- 
-    margin-bottom: 40px; /* Adjusted margin */
+    padding-bottom: 10px; /* Adjusted margin */
     padding-left: 20px;
-    font-size:medium;
-    padding-bottom: 140px;
-   
     
-  }
+    font-size: 15px;
+    
+}
   .profile-details{
-    font-family: Arial, sans-serif;
-    padding-top: 20px; /* Adjust padding as needed */
-    padding-bottom: 10px; /* Adjust padding as needed */
-    margin-bottom: 0; /* Remove default margin */
+   
+    padding-top: 80px; /* Adjust padding as needed */
+    padding-bottom: 170px; /* Adjust padding as needed */
+    /* Remove default margin */
+    color: black;
+    
   }
   
   /* Appliquer les styles de <p> à la classe .h3 */
   .h3 {
-    font-family:inherit; /* Vous pouvez utiliser une autre famille de polices si vous le souhaitez */
     margin-right: 0;
-   max-width: 100%;
-   opacity: 1; 
-   padding: 0px;
-   margin: 0px;
-   border: 0px;
+    max-width: 100%;
+    opacity: 1;
+    padding: 0px;
+    font-weight: bold;
+    margin: 0px;
+    font-size: 17px;
+    border: 0px;
     flex: 10 10 auto;
-    margin-bottom: 10px;
+    display: flex; /* Use Flexbox */
+    align-items: center; /* Align items vertically */
+    margin-bottom: 16px;
     padding-left: 20px;
-    padding-top: 80px;
-   padding-top: -30%;
-  }
-  .FontAwesomeIcon{
-    opacity: 0.6;
-  }
-  
+    padding-top: 95px;
+    padding-top: -30%;
+    color: black;
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+ .desc{
+  margin-top: 20px;
+ }
+ .truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
   .h2 {
-    font-family: sans-serif;
-  margin-right: 0; /* Adjusted margin */
-  margin-bottom: 20px;
-  padding-bottom: 0px;
+  margin-right: 0px; /* Adjusted margin */
+  align-items: center;
+  display: flex; /* Use Flexbox */
   padding-left: 20px;
-  font-size:medium;
-  
+  margin-bottom: 3px;
+  font-size: 14px;
+  font-weight: bold;
+    display: flex;
+  font-size:medium;color: black;  
   
   }
   .content {
@@ -125,25 +148,33 @@
  
   
   .para {
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin-right: 0; /* Adjusted margin */
     flex: 10 10 auto;
-    margin-bottom: 20px; /* Adjusted margin */
-    padding-left: 33px;
+    
+    display: flex; /* Use Flexbox */
+    align-items: center; /* Align items vertically */
+    margin-right: 0; /* Adjusted margin */
+    padding-bottom: 4px; /* Adjusted margin */
+    padding-left: 20px;
     font-size:larger;
-    color: #122177;
-    font-weight: bold;
+
+   
+    font-weight: bold;color: #4056A1;
   }
   .p1 {
-    font-family:sans-serif;
+    display: flex; /* Use Flexbox */
+    align-items: center; /* Align items vertically */
     margin-right: 0; /* Adjusted margin */
-    flex: 10 10 auto;
-    margin-bottom: 20px; /* Adjusted margin */
-    padding-left: 33px;
+    padding-bottom: 10px; /* Adjusted margin */
+    padding-left: 20px;
+    padding-top: 1px;
+    color: #808080;
+    font-size: 14px;
+    line-height: 24px;
   }
   .container {
     display: flex;
-    flex-direction: column; /* Définir la direction de flexbox comme colonne */
+    flex-direction: column; 
+    margin-left: auto; 
   }
   
   .mad{
@@ -151,7 +182,8 @@
     top:0; /* Align to the top */
     right: 0; /* Align to the right */
     margin: 0; /* Reset margin */
-    padding-top: 10px;
-    padding-right: 7px;
+    padding-top: 30px;
+    font-weight: bold;
+    padding-right: 25px;
 
   }

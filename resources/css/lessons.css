@@ -1,0 +1,80 @@
+/* App.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 1200px; /* Increase the max-width */
+
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #031fbd;
+  }
+  
+  p {
+    margin-bottom: 40px;
+    font-family:Arial, Helvetica, sans-serif;
+  }
+  
+  .sections {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  section {
+    flex: 1 1 calc(30% - 20px); /* Adjust width of each section */
+    max-width: calc(30% - 20px); /* Adjust max-width of each section */
+    background-color: #fff;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  section:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  h2 {
+    font-size: 1.5em;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  }
+  .additional-section {
+    text-align: center;
+    margin-top: 40px; /* Add margin for separation */
+    color: #646363;
+  }
+  
+  .additional-section section {
+    display: inline-block;
+    width: 30%; /* Adjust width as needed */
+    margin: 0 10px; /* Add margin between sections */
+  }
+  
+  .additional-section h2 {
+    font-size: 1.5em;
+    color: #031fbd;
+  }
+  
+  .additional-section p {
+    margin-top: 10px;
+  }
+  

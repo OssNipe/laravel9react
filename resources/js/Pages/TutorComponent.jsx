@@ -20,16 +20,16 @@ export default function TutorsList(props) {
 
     return (
         <AppLayout {...props}>
+            
             <div className="container">
                 <div className="row">
-                    <div className="col-12">
-                        <h1>Tutors List</h1>
+                    <div className="col-12 ">
                         <table className="table">
                             
                             <tbody>
                             {tutors.map((tutor, index) => (
                                 
-                            <ProfileCard
+                            <ProfileCard 
                                 key={index}
                                 name={tutor.user.name}
                                 id={tutor.user_id}
@@ -50,6 +50,7 @@ export default function TutorsList(props) {
                     </div>
                 </div>
             </div>
-        </AppLayout>
+            
+            </AppLayout>
     );
 }

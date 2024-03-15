@@ -1,0 +1,189 @@
+.image-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ensure the page takes the full height of the viewport */
+  background-image: url('Frame 1.png');
+  background-size:cover; /* Cover the entire container */
+  background-position: center; /* Center the background image */
+  font-family: Poppins;
+ 
+}
+
+.card {
+  height: 55%;
+  width: 400px;
+  box-sizing: border-box;
+  position: relative;
+  text-align: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 20px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 800px;
+}
+
+.card-content {
+  text-align: center;
+}
+
+.card h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #0f04b0;
+}
+
+.card p {
+  font-size: 16px;
+  color: #333;
+}
+
+.post-ad-btn {
+  padding: 15px 80px;
+  background-color: #0f04b0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+
+  font-size: 18px;
+  margin-bottom: 100px;
+}
+
+
+.post-ad-btn:hover {
+  background-color: #0056b3;
+}
+.how-it-works-container {
+  text-align: center;
+  padding: 50px;
+  background-color: #f3f3f3;
+}
+.how-it-works-container h2{
+  font-size: 33px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #09268a;
+}
+
+.how-it-works {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 30px;
+
+}
+
+.step {
+  width: 30%;
+  margin: 20px;
+}
+
+.step h3 {
+  font-size: 24px;
+  color: #0f04b0;
+  margin-bottom: 10px;
+}
+
+.step p {
+  font-size: 16px;
+  color: #333;
+}
+/* Existing styles remain unchanged */
+
+.why-advertise-container {
+  text-align: center;
+  padding: 50px;
+  background-color: #ffffff;
+}
+
+.why-advertise-container h2 {
+  font-size: 33px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #09268a;
+}
+
+.ad-reasons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.ad-reason {
+  width: 30%;
+  margin: 20px;
+}
+
+.ad-reason h3 {
+  font-size: 24px;
+  color: #0f04b0;
+  margin-bottom: 10px;
+}
+
+.ad-reason p {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Styling for Font Awesome icons */
+.ad-reason h3 i {
+  margin-right: 10px; /* Add some space between the icon and text */
+}
+
+/* Existing styles remain unchanged */
+
+.big-icon {
+  font-size: 48px; /* Adjust the icon size as needed */
+  margin-bottom: 10px; /* Add space between the icon and the title */
+}
+
+.icon-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* Your existing CSS styles */
+
+.faq-container {
+  text-align: center;
+  padding: 50px 100px;
+  background-color: #f3f3f3;
+}
+
+.faq-container h2 {
+  font-size: 33px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #09268a;
+}
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.faq-item {
+  margin-bottom: 30px;
+  max-width: 800px; /* Adjust as needed */
+}
+
+.faq-item h3 {
+  font-size: 24px;
+  color: #0f04b0;
+  margin-bottom: 10px;
+}
+
+.faq-item p {
+  font-size: 16px;
+  color: #333;
+}
+
+
+
+
+

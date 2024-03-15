@@ -7,6 +7,9 @@ use App\Http\Controllers\TutorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserImageController;
 use App\Http\Controllers\TutorAdController;
+use App\Http\Controllers\AdRatingController;
+
+
 use App\Models\User; // Import the User model
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +36,4 @@ Route::resource('tutors', TutorController::class);
 Route::post('/brother', [BrotherController::class, 'store']);
 Route::get('/brother', [BrotherController::class, 'index']);
 Route::get('/brother/{userId}/{ADid}', [BrotherController::class, 'show']);
+Route::post('/ad_ratings', [AdRatingController::class, 'store']);
