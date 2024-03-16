@@ -1,6 +1,7 @@
 body {
   font-family: "Open Sans", arial, sans-serif;
 }
+
 .profile-card {
     display: flex;
     align-items: center;

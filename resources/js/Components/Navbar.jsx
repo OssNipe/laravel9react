@@ -1,9 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import logo from "../../images/Group 1.png";
 import Dropdown from '@/Components/Dropdown';
 import { Link, Head } from '@inertiajs/react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faChartBar, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import ImageUploadAndDisplayComponent from './ImageUploadAndDisplayComponent'; // Import the image component
 function Navbar(props) {
+  const [imagePath, setImagePath] = useState('');
+
+  useEffect(() => {
+    fetchImage();
+  }, [props.userId]);
+
+  const fetchImage = async () => {
+    try {
+      const response = await axios.get(`/api/user_images/${props.userId}`);
+      setImagePath(`/storage/${response.data.image_path}`);
+    } catch (error) {
+      console.error('Error fetching image:', error);
+    }
+  };
+
   const [nav, setNav] = useState(false);
 
   const handleNav = () => {
@@ -24,23 +42,40 @@ function Navbar(props) {
                                 <Dropdown>
                                     <Dropdown.Trigger>
                                         <span >
-                                            <button
-                                                type="button"
-                                               
-                                            >
-                                                {props.auth.user.name}
+                                           
+                                        <div className="logo-container w-7 h-7 flex justify-center items-center rounded-full overflow-hidden mt-[-2px]">
+    <img src={imagePath} alt="User Logo" className="logo-image w-full h-full object-cover" />
+  </div>
 
                                                 
-                                            </button>
+                                            
                                         </span>
                                     </Dropdown.Trigger>
 
-                                    <Dropdown.Content>
-                                        <Dropdown.Link href={route('profile.edit')}>Profile</Dropdown.Link>
-                                        <Dropdown.Link  href={route('dashboard')}>Dashboard</Dropdown.Link>
-                                        <Dropdown.Link href={route('logout')} method="post">
-                                            Log Out
-                                        </Dropdown.Link>
+                                    <Dropdown.Content className="bg-white">
+    <div className="user-info flex items-center justify-between px-2 py-4 ">
+    <div className="logo-container w-9 h-9 flex justify-center items-center rounded-full overflow-hidden ml-2 mt-[1px]">
+    <img src={imagePath} alt="User Logo" className="logo-image w-full h-full object-cover rounded-full" />
+</div>
+  <div>
+   <p className="text-gray-700 font-bold text-[13px] mr-10 "> {props.auth.user.name}</p>
+  <p className="text-gray-500 text-[9px] text-sm mt-0 ">{props.auth.user.email}</p>
+  </div>  
+    </div>
+    <div className='bg-gray-50'>
+        <Dropdown.Link href={route('profile.edit')} className="block px-7 py-2 text-gray-700 hover:bg-gray-200">
+            <FontAwesomeIcon icon={faUser} className=" text-[10px] mr-3 text-gray-400" />
+            My Profile
+        </Dropdown.Link>
+        <Dropdown.Link href={route('dashboard')} className="block px-7 py-2 text-gray-700 hover:bg-gray-200 mb-2">
+            <FontAwesomeIcon icon={faChartBar} className=" text-[10px] mr-3 text-gray-400" />
+            Dashboard
+        </Dropdown.Link>
+        <Dropdown.Link href={route('logout')} method="post" className="block px-7 pt-3 text-gray-700 hover:bg-gray-200 border-t border-gray-200 ">
+            <FontAwesomeIcon icon={faSignOutAlt} className="text-[10px] mr-3 text-gray-400" />
+            Log Out
+        </Dropdown.Link>
+    </div>
                                     </Dropdown.Content>
                                 </Dropdown>
                            

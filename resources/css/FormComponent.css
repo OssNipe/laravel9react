@@ -1,3 +1,7 @@
+body {
+  font-family: "Open Sans", arial, sans-serif;
+}
+
 .form-container {
   width: 969px;
   height: auto;
@@ -8,6 +12,71 @@
   background-color: white;
   
 }
+.container2 {
+  --input-focus: #2d8cf0;
+  --input-out-of-focus: #EAE7DC;
+  --bg-color: #fff;
+  --bg-color-alt: #EAE7DC;
+  --main-color: #323232;
+  position: relative;
+  cursor: pointer;
+  
+}
+
+.container2 input {
+  position: absolute;
+  opacity: 0;
+
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: 0;
+  left: 0;
+  border: 2px solid var(--main-color);
+  border-radius: 5px;
+  box-shadow: 4px 4px var(--main-color);
+  background-color: var(--input-out-of-focus);
+  transition: all 0.3s;
+  margin-right: 15px;
+}
+
+.container2 input:checked ~ .checkmark {
+  background-color: var(--input-focus);
+}
+
+.checkmark:after {
+  content: "";
+  width: 7px;
+  height: 15px;
+  position: absolute;
+  top: -1px;
+  left:4px;
+  display: none;
+  border: solid var(--bg-color);
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+
+.container2 input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* CSS for checkboxes */
+.form-row .label ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.form-row .label ul li {
+  display: inline-block;
+  margin-right: 60px;
+  padding-bottom: 30px;
+}
+
 .container{
   
   margin-right: 0px;
@@ -51,10 +120,31 @@
  
 }
 
+.change{
+  padding-bottom: 170px;
+}
 .form-row {
   width: 100%;
 }
+.textarea-input{
+  height: 200px;
+}
+.form-row select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+.loci{
+margin-right: 92px;
+}
 
+.form-row select:focus {
+  outline: none;
+  border-color: #2d8cf0; /* Adjust focus border color */
+}
 .form-container input[type="text"],
 .form-container textarea {
   width: calc(100% - 150px);
@@ -65,7 +155,24 @@
   font-size: 16px;
   transition: all 0.3s ease;
 }
+.baba{
+  margin-right: 435px;
+}
+.form-row input[type="number"] {
+  width: 30%;
 
+  padding: 10px;
+  padding-right: 20px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.form-row input[type="number"]:focus {
+  outline: none;
+  border-color: #2d8cf0; /* Adjust focus border color */
+}
 .button-container {
   display: flex;
   justify-content: flex-end;
