@@ -1,0 +1,253 @@
+/* ProfilePage.css */
+
+.teacher-profile {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.teacher-photo img {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%; /* Display the image as a circle */
+  margin-left: 100px;
+  margin-top: 60px;
+}
+
+.teacher-info {
+  padding-bottom: 80px;
+}
+
+.teacher-info h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #0b2fac;
+  margin-left: 60px;
+}
+
+.teacher-details p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #666;
+  margin-left: 60px;
+}
+
+.teacher-details p svg {
+  margin-right: 5px;
+  color: #6482edb6; /* Set the color for the Font Awesome icons */
+}
+
+.contact-button {
+  position: absolute; /* Position the button absolutely */
+  top: 20px; /* Adjust top position */
+  right: 20px; /* Adjust right position */
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #0b2fac;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-right: 200px;
+  margin-top: 85px;
+  width: 220px;
+  height: 55px;
+}
+
+.price {
+  margin-left: 607px;
+  margin-top: -180px; /* Adjust top margin */
+  font-size: 19px;
+}
+
+.free {
+  margin-left: 607px;
+  margin-bottom: 60px;
+  color: #0b2fac;
+  font-size: 16px;
+  font-style: inherit;
+  font-weight: bold;
+}
+
+.hr {
+  border: 1px solid #000;
+  margin-top: 20px; /* Adjust the margin as needed */
+}
+
+/* Styles for the big title */
+.big-title {
+  text-align: right;
+  font-size: 24px; /* Adjust the font size as needed */
+  margin-top: 60px; /* Adjust the margin as needed */
+  margin-right: 185px;
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  font-weight: bold;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 48px;
+  color: #0b2fac;
+}
+
+.price2 {
+  margin-bottom: 50px;
+  margin-left: 30px;
+  font-size: 19px;
+  padding-bottom: 20px;
+}
+
+.free2 {
+  margin-bottom: -60px;
+  margin-left: 50px;
+  font-size: 16px;
+  padding-top: -5px;
+}
+
+.free3 {
+  margin-top: -40px;
+  margin-left: 50px;
+  font-size: 16px;
+}
+
+.level-title {
+  margin-top: 70px;
+  margin-left: 30px;
+  font-size: 19px;
+}
+
+/* Add styles for levels list */
+.levels {
+  margin-left: 45px;
+  font-size: 18px;
+}
+
+.levels p {
+  font-size: 16px;
+  margin-top: 40px;
+  padding-top: -5px;
+}
+
+.advert-section {
+  float: right;
+  width: 50%;
+}
+
+.advert-title {
+  color: #000000dd;
+  font-size: 30px;
+  margin-bottom: 10px;
+  margin-left: -200px;
+}
+
+.advert-description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+  margin-left: -200px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: inherit;
+  font-size: 18px;
+  padding-right: 100px;
+}
+
+.about-me-title {
+  color: #000000dd;
+  font-size: 30px;
+  margin-bottom: 10px;
+  margin-left: -200px;
+}
+
+.about-me-description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+  margin-left: -200px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: inherit;
+  font-size: 18px;
+  padding-right: 100px;
+}
+
+.location-title {
+  margin-top: 50px; /* Adjust top margin */
+  margin-left: 30px; /* Adjust left margin */
+  font-size: 19px; /* Adjust font size */
+  color: #000000; /* Adjust color */
+}
+
+.location-description {
+  margin-left: 50px; /* Adjust left margin */
+  font-size: 16px; /* Adjust font size */
+  color: #000000; /* Adjust color */
+}
+
+/* Media Query for Responsive Design */
+@media only screen and (max-width: 768px) {
+  .teacher-profile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .teacher-photo img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+  .teacher-info {
+    padding-bottom: 20px;
+  }
+
+  .teacher-info h2 {
+    font-size: 20px;
+    margin-left: 20px;
+  }
+
+  .teacher-details p {
+    font-size: 14px;
+    margin-left: 20px;
+  }
+
+  .contact-button {
+    position: static;
+    margin: 20px;
+    width: auto;
+    height: auto;
+    font-size: 14px;
+  }
+
+  .price,
+  .free {
+    margin: 20px;
+    font-size: 14px;
+  }
+
+  .big-title {
+    font-size: 28px;
+    margin: 20px;
+  }
+
+  .price2,
+  .free2,
+  .free3,
+  .level-title,
+  .advert-title,
+  .about-me-title,
+  .location-title {
+    margin: 20px;
+    font-size: 16px;
+  }
+
+  .advert-description,
+  .about-me-description,
+  .location-description {
+    margin: 20px;
+    font-size: 14px;
+    padding-right: 20px;
+  }
+}

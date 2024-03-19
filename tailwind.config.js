@@ -14,6 +14,11 @@ module.exports = {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                customIndigo: '#4056A1',
+                'top-color': '#4056A1',
+        'heading': '#fcfbfc',
+            },
         },
     },
 
