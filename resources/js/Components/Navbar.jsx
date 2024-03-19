@@ -28,9 +28,10 @@ function Navbar(props) {
     setNav(!nav); };
  
   return (
-<div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white'>     
+<div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white'>   
+<Link href="/">
 <h1 className='w-full text-3xl font-bold text-[#4056A1]'>SWAY3.</h1>
-      
+</Link>  
       <ul className='hidden md:flex'>
         <li className='p-4 text-black'><Link href={route('Home')}>Home</Link></li>
         <li className='p-4 whitespace-nowrap text-black'><Link href={route('TutorComponent')}>find a tutor</Link></li>
@@ -51,24 +52,23 @@ function Navbar(props) {
                                             
                                         </span>
                                     </Dropdown.Trigger>
-
-                                    <Dropdown.Content className="bg-white">
-    <div className="user-info flex items-center justify-between px-2 py-4 ">
-    <div className="logo-container w-9 h-9 flex justify-center items-center rounded-full overflow-hidden ml-2 mt-[1px]">
-    <img src={imagePath} alt="User Logo" className="logo-image w-full h-full object-cover rounded-full" />
-</div>
-  <div>
-   <p className="text-gray-700 font-bold text-[13px] mr-10 "> {props.auth.user.name}</p>
-  <p className="text-gray-500 text-[9px] text-sm mt-0 ">{props.auth.user.email}</p>
-  </div>  
+                                    <Dropdown.Content  className="bg-white ">
+    <div className="user-info flex items-center justify-between px-2 py-4">
+        <div className="logo-container w-9 h-9 flex justify-center items-center rounded-full overflow-hidden translate-x-[-2px] ml-2 mt-[2px]">
+            <img src={imagePath} alt="User Logo" className="logo-image w-full h-full object-cover rounded-full" />
+        </div>
+        <div>
+            <p className="text-gray-700 font-bold text-[13px] translate-y-[-2px] translate-x-[-45px]">{props.auth.user.name}</p>
+            <p className="text-gray-500 text-[10px] translate-y-[-7px] translate-x-[-45px] mt-0">{props.auth.user.email}</p>
+        </div>  
     </div>
     <div className='bg-gray-50'>
         <Dropdown.Link href={route('profile.edit')} className="block px-7 py-2 text-gray-700 hover:bg-gray-200">
-            <FontAwesomeIcon icon={faUser} className=" text-[10px] mr-3 text-gray-400" />
+            <FontAwesomeIcon icon={faUser} className="text-[10px] mr-3 text-gray-400" />
             My Profile
         </Dropdown.Link>
         <Dropdown.Link href={route('dashboard')} className="block px-7 py-2 text-gray-700 hover:bg-gray-200 mb-2">
-            <FontAwesomeIcon icon={faChartBar} className=" text-[10px] mr-3 text-gray-400" />
+            <FontAwesomeIcon icon={faChartBar} className="text-[10px] mr-3 text-gray-400" />
             Dashboard
         </Dropdown.Link>
         <Dropdown.Link href={route('logout')} method="post" className="block px-7 pt-3 text-gray-700 hover:bg-gray-200 border-t border-gray-200 ">
@@ -76,7 +76,8 @@ function Navbar(props) {
             Log Out
         </Dropdown.Link>
     </div>
-                                    </Dropdown.Content>
+</Dropdown.Content>
+
                                 </Dropdown>
                            
                         </li> ) : (

@@ -16,7 +16,7 @@ class BrotherController extends Controller
 
     public function index()
     {
-        $tutors = Brother::with('user:id,name')->select('id', 'advert_title', 'lessons_taught', 'about_lessons', 'about_you', 'location', 'location_preference', 'levels', 'hourly_rate', 'user_id')->get();
+        $tutors = Brother::with('user:id,name')->select('id', 'advert_title', 'lessons_taught', 'about_lessons', 'about_you', 'location', 'location_preference', 'levels', 'hourly_rate', 'PhoneNumber', 'user_id')->get();
 
         foreach ($tutors as $tutor) {
             $userImage = UserImage::where('user_id', $tutor->user_id)->first();
@@ -47,6 +47,7 @@ class BrotherController extends Controller
             'location' => 'required',
             'location_preference' => 'required',
             'levels' => 'required',
+            'PhoneNumber' => 'required|numeric',
             'hourly_rate' => 'required|numeric',
         ]);
 
@@ -69,7 +70,7 @@ class BrotherController extends Controller
     public function show($userId, $adId)
     {
         // Fetch brother details associated with the given user_id and ad_id
-        $tutor = Brother::with('user:id,name')->select('id', 'advert_title', 'lessons_taught', 'about_lessons', 'about_you', 'location', 'location_preference', 'levels', 'hourly_rate', 'user_id')
+        $tutor = Brother::with('user:id,name')->select('id', 'advert_title', 'lessons_taught', 'about_lessons', 'about_you', 'location', 'location_preference', 'levels', 'hourly_rate', 'PhoneNumber', 'user_id')
             ->where('user_id', $userId)
             ->where('id', $adId)
             ->first();
@@ -96,6 +97,7 @@ class BrotherController extends Controller
             'location' => 'required',
             'location_preference' => 'required',
             'levels' => 'required',
+            'PhoneNumber' => 'required|numeric',
             'hourly_rate' => 'required|numeric',
         ]);
 

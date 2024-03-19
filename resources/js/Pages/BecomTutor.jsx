@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AppLayout from '@/Layouts/AppLayout';
 import "../../css/FormComponent.css";
 import axios from "axios";
+import { Link } from "@inertiajs/react";
 
 const CreateTutorAdForm = (props ) =>  {
   const [formData, setFormData] = useState({
@@ -13,6 +14,7 @@ const CreateTutorAdForm = (props ) =>  {
     location_preference: "",
     levels: "",
     hourly_rate: "",
+    PhoneNumber: "+212",
     user_id: props.userId 
   });
   const subjects = ['Math', 'Science', 'History', 'English', 'Art'];
@@ -107,7 +109,7 @@ const CreateTutorAdForm = (props ) =>  {
     try {
       const response = await axios.post('api/brother', formData);
       console.log(response.data.message);
-      // Optionally, redirect the user or show a success message
+      <Link href={route('TutorComponent')}></Link>
     } catch (error) {
       console.error("Error creating tutor ad:", error);
     }
@@ -323,6 +325,18 @@ const CreateTutorAdForm = (props ) =>  {
     </ul>
   </label>
 </div>
+<div className="form-row">
+          <label className="label">
+            <span className="loci2">Phone number:</span>
+            <input
+            className="baba"
+              type="number"
+              name="PhoneNumber"
+              value={formData.PhoneNumber}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
         <div className="form-row">
           <label className="label">
             <span className="loci2">Hourly Rate:</span>

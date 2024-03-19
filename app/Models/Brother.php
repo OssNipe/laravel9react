@@ -17,6 +17,7 @@ class Brother extends Model
         'location_preference',
         'levels',
         'hourly_rate',
+        'PhoneNumber',
         'user_id'
     ];
     public function user()

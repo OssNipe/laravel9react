@@ -69,10 +69,10 @@ body {
 }
   .profile-details{
    
-    padding-top: 80px; /* Adjust padding as needed */
-    padding-bottom: 170px; /* Adjust padding as needed */
+     /* Adjust padding as needed */
     /* Remove default margin */
     color: black;
+    transform: translateY(4px);
     
   }
   
@@ -81,7 +81,7 @@ body {
     margin-right: 0;
     max-width: 100%;
     opacity: 1;
-    padding: 0px;
+   
     font-weight: bold;
     margin: 0px;
     font-size: 17px;
@@ -91,8 +91,8 @@ body {
     align-items: center; /* Align items vertically */
     margin-bottom: 16px;
     padding-left: 20px;
-    padding-top: 95px;
-    padding-top: -30%;
+   
+    
     color: black;
     white-space: nowrap; /* Prevent text from wrapping */
 }
@@ -167,7 +167,7 @@ body {
     margin-right: 0; /* Adjusted margin */
     padding-bottom: 10px; /* Adjusted margin */
     padding-left: 20px;
-    padding-top: 1px;
+   
     color: #808080;
     font-size: 14px;
     line-height: 24px;
@@ -183,7 +183,7 @@ body {
     top:0; /* Align to the top */
     right: 0; /* Align to the right */
     margin: 0; /* Reset margin */
-    padding-top: 30px;
+    transform: translateY(30px);
     font-weight: bold;
     padding-right: 25px;
 
