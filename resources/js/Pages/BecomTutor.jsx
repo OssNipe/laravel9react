@@ -14,7 +14,7 @@ const CreateTutorAdForm = (props ) =>  {
     location_preference: "",
     levels: "",
     hourly_rate: "",
-    PhoneNumber: "+212",
+    PhoneNumber: "",
     user_id: props.userId 
   });
   const subjects = ['Math', 'Science', 'History', 'English', 'Art'];
@@ -76,34 +76,26 @@ const CreateTutorAdForm = (props ) =>  {
       "Zagora"
     ];
     
+    const handleChange = (e) => {
+      const { name, value, checked } = e.target;
+      if (name === 'levels') {
+        const level = value;
+        setFormData((prevData) => ({
+          ...prevData,
+          levels: checked
+            ? [...prevData.levels, level] // Add the selected level
+            : prevData.levels.filter((l) => l !== level), // Remove the unselected level
+        }));
+      } else {
+        setFormData((prevData) => ({
+          ...prevData,
+          [name]: value
+        }));
+      }
+    };
+    
+    
   
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
-  
-  const handleCheckboxChange = (event) => {
-    const { name, checked } = event.target;
-    const value = event.target.value;
-
-    // Update the form data based on whether the checkbox is checked or unchecked
-    if (checked) {
-      setFormData((prevData) => ({
-        ...prevData,
-        location_preference: [...prevData.location_preference, value],
-      }));
-    } else {
-      setFormData((prevData) => ({
-        ...prevData,
-        location_preference: prevData.location_preference.filter(
-          (item) => item !== value
-        ),
-      }));
-    }
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -285,44 +277,47 @@ const CreateTutorAdForm = (props ) =>  {
 <div className="form-row">
   <label className="label">
   <span>Levels:</span>
-    <ul>
-      <li>
-        <label  class="container2">
-          <input
-             type="checkbox"
-            name="levels"
-            value="2_BAC"
-            checked={formData.levels === "2_BAC"}
-            onChange={handleChange}
-          /> <div class="checkmark"></div>
-          2 BAC
-        </label>
-      </li>
-      <li>
-        <label class="container2">
-          <input
-            type="checkbox"
-            name="levels"
-            value="1_BAC"
-            checked={formData.levels === "1_BAC"}
-            onChange={handleChange}
-          /><div class="checkmark"></div>
-          1 BAC
-        </label>
-      </li>
-      <li>
-        <label class="container2">
-          <input
-            type="checkbox"
-            name="levels"
-            value="LA_FAC"
-            checked={formData.levels === "LA_FAC"}
-            onChange={handleChange}
-          /><div class="checkmark"></div>
-          LA FAC
-        </label>
-      </li>
-    </ul>
+  <ul>
+    <li>
+      <label className="container2">
+        <input
+          type="checkbox"
+          name="levels"
+          value="2_BAC"
+          checked={formData.levels.includes("2_BAC")}
+          onChange={handleChange}
+        />
+        <div className="checkmark"></div>
+        2 BAC
+      </label>
+    </li>
+    <li>
+      <label className="container2">
+        <input
+          type="checkbox"
+          name="levels"
+          value="1_BAC"
+          checked={formData.levels.includes("1_BAC")}
+          onChange={handleChange}
+        />
+        <div className="checkmark"></div>
+        1 BAC
+      </label>
+    </li>
+    <li>
+      <label className="container2">
+        <input
+          type="checkbox"
+          name="levels"
+          value="LA_FAC"
+          checked={formData.levels.includes("LA_FAC")}
+          onChange={handleChange}
+        />
+        <div className="checkmark"></div>
+        LA FAC
+      </label>
+    </li>
+  </ul>
   </label>
 </div>
 <div className="form-row">

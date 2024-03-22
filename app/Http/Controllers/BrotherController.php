@@ -46,20 +46,23 @@ class BrotherController extends Controller
             'about_you' => 'required',
             'location' => 'required',
             'location_preference' => 'required',
-            'levels' => 'required',
             'PhoneNumber' => 'required|numeric',
             'hourly_rate' => 'required|numeric',
+            'levels' => 'required|array', // Ensure levels is an array
+            'levels.*' => 'string', // Each level should be a string
         ]);
 
+        // Convert the levels array to a comma-separated string
+        $levels = implode(',', $request->input('levels'));
 
-
-        // Create a new tutor ad record with the user ID
-        Brother::create($request->post());
+        // Create a new tutor ad record with the user ID and levels
+        Brother::create(array_merge($request->except('levels'), ['levels' => $levels]));
 
         return response()->json([
             'message' => 'Tutor ad created successfully'
         ]);
     }
+
 
     /**
      * Display the specified resource.
@@ -85,9 +88,23 @@ class BrotherController extends Controller
 
         return response()->json($tutor);
     }
+    public function showContent($userId)
+    {
+        // Fetch brother details associated with the given user_id
+        $tutor = Brother::with('user:id,name')
+            ->select('advert_title', 'lessons_taught', 'about_lessons', 'about_you', 'location', 'location_preference', 'levels', 'hourly_rate', 'PhoneNumber', 'user_id')
+            ->where('user_id', $userId)
+            ->first();
+
+        if (!$tutor) {
+            return response()->json(['message' => 'Tutor not found'], 404);
+        }
+
+        return response()->json($tutor);
+    }
 
 
-    public function update(Request $request, Brother $brother)
+    public function update(Request $request, $userId)
     {
         $request->validate([
             'advert_title' => 'required',
@@ -95,19 +112,36 @@ class BrotherController extends Controller
             'about_lessons' => 'required',
             'about_you' => 'required',
             'location' => 'required',
-            'location_preference' => 'required',
-            'levels' => 'required',
             'PhoneNumber' => 'required|numeric',
             'hourly_rate' => 'required|numeric',
+            'location_preference' => 'required',
+            'levels' => 'required|array', // Ensure levels is an array
+            'levels.*' => 'string' // Each level should be a string
         ]);
 
+        // Convert the levels array to a comma-separated string
+        $levels = implode(',', $request->input('levels'));
+
+        // Find the Brother record associated with the given user ID
+        $brother = Brother::where('user_id', $userId)->first();
+
+        // Check if the Brother record exists
+        if (!$brother) {
+            return response()->json(['message' => 'Tutor ad not found'], 404);
+        }
+
         // Update the existing Brother record with the new data
-        $brother->update(array_merge($request->all(), ['user_id' => auth()->id()]));
+        // Exclude 'levels' from $request->all() and merge manually with the converted $levels
+        $updateData = array_merge($request->except('levels'), ['levels' => $levels]);
+
+        $brother->update($updateData);
 
         return response()->json([
             'message' => 'Tutor ad updated successfully'
         ]);
     }
+
+
 
     /**
      * Remove the specified resource from storage.

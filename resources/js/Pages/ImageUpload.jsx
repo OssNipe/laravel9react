@@ -59,17 +59,21 @@ const ImageUploadAndDisplayComponent = ({ userId }) => {
   };
 
   return (
-    <div>
-      <input type="file" onChange={handleFileChange} />
-      <button onClick={uploadImage}>Upload Image</button>
-      {errorMessage && <div className="error">{errorMessage}</div>}
-      {successMessage && <div className="success">{successMessage}</div>}
-      <div>
-        
-          <img src={imagePath} alt="User Image" />
-     
-      </div>
+    <div class="p-4">
+    
+    {errorMessage && <div class="text-red-500">{errorMessage}</div>}
+    {successMessage && <div class="text-green-500">{successMessage}</div>}
+    <div className="logo-container w-80  h-80 flex justify-center items-center rounded-full overflow-hidden translate-x-[800px] ">
+            <img src={imagePath} alt="User Logo" className="logo-image w-full h-full object-cover rounded-full" />
     </div>
+    <div class=" translate-x-[680px]">
+    <input type="file" onChange={handleFileChange} class="mb-2 "  />
+    <button onClick={uploadImage} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Upload Image
+    </button>
+    </div>
+  </div>
+  
   );
 };
 

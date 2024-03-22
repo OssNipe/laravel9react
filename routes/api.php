@@ -28,7 +28,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Route for deleting a user image
 Route::post('/user_images', [UserImageController::class, 'store']);
-
+Route::put('brother/{userId}', [BrotherController::class, 'update']);
 
 Route::get('/user_images/{userId}', [UserImageController::class, 'show']);
 Route::resource('tutors', TutorController::class);
@@ -37,3 +37,5 @@ Route::post('/brother', [BrotherController::class, 'store']);
 Route::get('/brother', [BrotherController::class, 'index']);
 Route::get('/brother/{userId}/{ADid}', [BrotherController::class, 'show']);
 Route::post('/ad_ratings', [AdRatingController::class, 'store']);
+Route::get('brother/getAdIdByUserId/{userId}', [BrotherController::class, 'getAdIdByUserId']);
+Route::get('/brother/{userId}', [BrotherController::class, 'showContent']);
