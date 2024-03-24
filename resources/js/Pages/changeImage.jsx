@@ -35,7 +35,7 @@ export default function ChangeImage(props) {
                     about_lessons: data.about_lessons,
                     about_you: data.about_you,
                     location_preference: data.location_preference,
-                    
+                    levels: data.levels,
                     location: data.location,
                     PhoneNumber: data.PhoneNumber,
                     hourly_rate: data.hourly_rate,
@@ -116,21 +116,30 @@ export default function ChangeImage(props) {
       };
       const handleChange = (e) => {
         const { name, value, checked } = e.target;
+    
         if (name === 'levels') {
-          const level = value;
-          setFormData((prevData) => ({
-            ...prevData,
-            levels: checked
-              ? [...prevData.levels, level] // Add the selected level
-              : prevData.levels.filter((l) => l !== level), // Remove the unselected level
-          }));
+            // Ensure we're working with an array
+            setFormData((prevData) => {
+                const levelsArray = Array.isArray(prevData.levels) ? prevData.levels : [];
+                
+                const updatedLevels = checked
+                    ? [...levelsArray, value] // Add the level if it's checked
+                    : levelsArray.filter((l) => l !== value); // Remove the level if it's unchecked
+    
+                return {
+                    ...prevData,
+                    levels: updatedLevels,
+                };
+            });
         } else {
-          setFormData((prevData) => ({
-            ...prevData,
-            [name]: value
-          }));
+            // Handle other form fields
+            setFormData((prevData) => ({
+                ...prevData,
+                [name]: value,
+            }));
         }
-      };
+    };
+    
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevData => ({

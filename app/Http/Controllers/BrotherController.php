@@ -81,7 +81,7 @@ class BrotherController extends Controller
         if (!$tutor) {
             return response()->json(['message' => 'Tutor not found'], 404);
         }
-
+        $tutor->levels = explode(',', $tutor->levels); // Convert string to arrays
         // Fetch user's image
         $userImage = UserImage::where('user_id', $userId)->first();
         $tutor->user->image_path = $userImage ? $userImage->image_path : null;
@@ -90,7 +90,6 @@ class BrotherController extends Controller
     }
     public function showContent($userId)
     {
-        // Fetch brother details associated with the given user_id
         $tutor = Brother::with('user:id,name')
             ->select('advert_title', 'lessons_taught', 'about_lessons', 'about_you', 'location', 'location_preference', 'levels', 'hourly_rate', 'PhoneNumber', 'user_id')
             ->where('user_id', $userId)
@@ -100,8 +99,12 @@ class BrotherController extends Controller
             return response()->json(['message' => 'Tutor not found'], 404);
         }
 
+        // Assuming levels are stored as a comma-separated string
+        $tutor->levels = explode(',', $tutor->levels); // Convert string to array
+
         return response()->json($tutor);
     }
+
 
 
     public function update(Request $request, $userId)

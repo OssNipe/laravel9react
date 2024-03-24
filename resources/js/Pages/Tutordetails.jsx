@@ -5,7 +5,7 @@ import Navbar from '../Components/Navbarcopy';
 import { faMapMarkerAlt, faUserGraduate, faMoneyCheckDollar, faLayerGroup, faLocationDot } from '@fortawesome/free-solid-svg-icons'; // Import the DollarSign icon
 import AppLayout from '@/Layouts/AppLayout';
 import "../../css/ProfilePage.css";
-
+import NavbarC from "../Components/NavbarC"
 export default function Tutordetails({ADid,tutorId }) {
     const [tutorDetails, setTutorDetails] = useState(null);
 
@@ -90,8 +90,24 @@ export default function Tutordetails({ADid,tutorId }) {
                         </div>
 
                     </div>
+                    
                 </div>
-               
+                <div class="py-3 sm:order-none order-2">
+                
+                    <h2 class="text-lg font-poppins font-bold text-top-color"><FontAwesomeIcon icon={faMoneyCheckDollar} style={{ color: '#0b2fac',marginRight:'5' }} /> levels</h2>
+                    <div class="border-2 w-20 border-top-color my-3"></div>
+
+                    <div>
+                        <div class="flex items-center my-1">
+                           
+                            <div class="ml-2">{tutorDetails.levels} </div>
+                            
+                        </div>
+                        
+
+                    </div>
+                    
+                </div>
                 
 
             </div>
