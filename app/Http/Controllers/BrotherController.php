@@ -40,23 +40,18 @@ class BrotherController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'advert_title' => 'required',
-            'lessons_taught' => 'required',
-            'about_lessons' => 'required',
-            'about_you' => 'required',
-            'location' => 'required',
-            'location_preference' => 'required',
-            'PhoneNumber' => 'required|numeric',
-            'hourly_rate' => 'required|numeric',
-            'levels' => 'required|array', // Ensure levels is an array
-            'levels.*' => 'string', // Each level should be a string
+            // Your validation rules here...
         ]);
 
-        // Convert the levels array to a comma-separated string
         $levels = implode(',', $request->input('levels'));
 
-        // Create a new tutor ad record with the user ID and levels
-        Brother::create(array_merge($request->except('levels'), ['levels' => $levels]));
+        // Serialize schedule data to store in the database
+        $schedule = json_encode($request->input('schedule'));
+
+        Brother::create(array_merge(
+            $request->except(['levels', 'schedule']),
+            ['levels' => $levels, 'schedule' => $schedule]
+        ));
 
         return response()->json([
             'message' => 'Tutor ad created successfully'
@@ -152,12 +147,16 @@ class BrotherController extends Controller
      * @param  \App\Models\Brother  $brother
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Brother $brother)
+    public function destroy($userId)
     {
+        $brother = Brother::where('user_id', $userId)->first();
+
+        if (!$brother) {
+            return response()->json(['message' => 'Brother record not found for the given user ID'], 404);
+        }
+
         $brother->delete();
 
-        return response()->json([
-            'message' => 'Tutor ad deleted successfully'
-        ]);
+        return response()->json(['message' => 'Tutor ad deleted successfully']);
     }
 }

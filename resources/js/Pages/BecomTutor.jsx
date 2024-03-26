@@ -15,7 +15,8 @@ const CreateTutorAdForm = (props ) =>  {
     levels: "",
     hourly_rate: "",
     PhoneNumber: "",
-    user_id: props.userId 
+    user_id: props.userId ,
+    
   });
   const subjects = ['Math', 'Science', 'History', 'English', 'Art'];
   const cities = [
@@ -77,19 +78,9 @@ const CreateTutorAdForm = (props ) =>  {
     ];
    
 
-    const initialSchedule = {
-      Monday: [],
-      Tuesday: [],
-      Wednesday: [],
-      Thursday: [],
-      Friday: [],
-      Saturday: [],
-      Sunday: [],
-    };
+   
     
-    // Times can be predefined as well
-    const timeSlots = ["8-10", "10-12", "2-4", "4-6"];
-    const [schedule, setSchedule] = useState(initialSchedule);
+
     const handleChange = (e) => {
       const { name, value, checked } = e.target;
       if (name === 'levels') {
@@ -255,35 +246,7 @@ const CreateTutorAdForm = (props ) =>  {
       ))}
     </select>
   </label>
-</div><div className="schedule-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Day / Time</th>
-        {timeSlots.map((slot, index) => (
-          <th key={index}>{slot}</th>
-        ))}
-      </tr>
-    </thead>
-    <tbody>
-      {Object.keys(schedule).map((day) => (
-        <tr key={day}>
-          <td>{day}</td>
-          {timeSlots.map((time) => (
-            <td key={time}>
-              <input
-                type="checkbox"
-                checked={schedule[day].includes(time)}
-                onChange={(e) => handleScheduleChange(day, time, e.target.checked)}
-              />
-            </td>
-          ))}
-        </tr>
-      ))}
-    </tbody>
-  </table>
 </div>
-
 
         <div className="form-row">
   <label className="label">

@@ -27,12 +27,13 @@ function Navbar(props) {
     setNav(!nav); };
  
   return (
-<div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white'>
+    <div className='bg-white border border-b-2'>
+<div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white bg-white'>
   <Link href="/">
-    <h1 className='w-full text-3xl font-bold text-black'>SWAY3.</h1>
+    <h1 className='w-full text-3xl font-bold text-black '>SWAY3.</h1>
   </Link>
   <ul className='hidden md:flex flex-grow justify-center'>
-    <li className='p-4 text-black'><Link href={route('Home')}>Home</Link></li>
+    <li className='p-4 text-black '><Link href={route('Home')}>Home</Link></li>
     <li className='p-4 whitespace-nowrap text-black'><Link href={route('TutorComponent')}>Find a Tutor</Link></li>
     <li className='p-4 whitespace-nowrap text-black'><Link href={route('BecomTutor')}>Become a Tutor</Link></li>
   </ul>
@@ -77,14 +78,14 @@ function Navbar(props) {
       </li>
     ) : (
       <>
-        <li className='p-4 whitespace-nowrap text-black font-bold'>
+        <li className='p-4 whitespace-nowrap text-black font-bold translate-x-[-200px]'>
           <Link href={route('login')}>
             Log in
           </Link>
         </li>
         <li className='p-2 whitespace-nowrap text-white font-bold'>
           <Link href={route('register')}>
-            <a className="inline-block px-4 py-2 bg-black hover:bg-gray-700 rounded-md transition duration-300">
+            <a className="inline-block px-4 py-2 bg-black hover:bg-gray-700 rounded-md transition duration-300 translate-x-[-200px]">
               Register
             </a>
           </Link>
@@ -146,6 +147,7 @@ function Navbar(props) {
           </>
           )}
         </ul>
+        </div>
         </div>
     );
       

@@ -18,7 +18,8 @@ class Brother extends Model
         'levels',
         'hourly_rate',
         'PhoneNumber',
-        'user_id'
+        'user_id',
+        'schedule'
     ];
     public function user()
     {

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Navbar from '../Components/Navbarcopy';
 import { faMapMarkerAlt, faUserGraduate, faMoneyCheckDollar, faLayerGroup, faLocationDot } from '@fortawesome/free-solid-svg-icons'; // Import the DollarSign icon
 import AppLayout from '@/Layouts/AppLayout';
 import "../../css/ProfilePage.css";
-import NavbarC from "../Components/NavbarC"
 export default function Tutordetails({ADid,tutorId }) {
     const [tutorDetails, setTutorDetails] = useState(null);
 

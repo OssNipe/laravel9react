@@ -39,3 +39,4 @@ Route::get('/brother/{userId}/{ADid}', [BrotherController::class, 'show']);
 Route::post('/ad_ratings', [AdRatingController::class, 'store']);
 Route::get('brother/getAdIdByUserId/{userId}', [BrotherController::class, 'getAdIdByUserId']);
 Route::get('/brother/{userId}', [BrotherController::class, 'showContent']);
+Route::delete('/brother/{id}', [BrotherController::class, 'destroy']);

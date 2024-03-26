@@ -20,13 +20,24 @@ export default function ChangeImage(props) {
         hourly_rate: "",
         user_id: props.userId,
     });
+    const [userNotFound, setUserNotFound] = useState(false); // New state to handle user not found
 
+    const handleDelete = async () => {
+      try {
+        // Send a DELETE request to the backend to delete the ad
+        const response = await axios.delete(`api/brother/${props.userId}`);
+        console.log(response.data.message);
+        // Redirect or perform any necessary actions after deletion
+      } catch (error) {
+        console.error("Error deleting tutor ad:", error);
+      }
+    };
     useEffect(() => {
         async function fetchData() {
             try {
                 const response = await axios.get(`/api/brother/${props.userId}`);
                 const data = response.data;
-
+                setUserNotFound(false);
                 // Update formData state with fetched data
                 setFormData({
                     ...formData,
@@ -41,8 +52,13 @@ export default function ChangeImage(props) {
                     hourly_rate: data.hourly_rate,
                 });
             } catch (error) {
-                console.error("Error fetching data:", error);
-            }
+              if (error.response && error.response.status === 404) {
+                // Handle user not found
+                setUserNotFound(true);
+             
+            } else {
+              console.error("Error fetching data:", error);} 
+          }
         }
 
         fetchData();
@@ -162,7 +178,24 @@ export default function ChangeImage(props) {
             console.error("Error updating tutor ad:", error);
         }
     };
-    
+    if (userNotFound) {
+      // User not found, show button to become a tutor
+      return (
+        <AuthenticatedLayout
+        auth={props.auth}
+        errors={props.errors}
+        header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">changeImage</h2>}
+    >
+          <div>
+              <p>User not found. Would you like to become a tutor?</p>
+              <button onClick={() => {/* logic to handle becoming a tutor, possibly redirect to a form */}}>
+                  Become a Tutor
+              </button>
+          </div>
+          </AuthenticatedLayout>
+
+      );
+  }
     return (
         <AuthenticatedLayout
             auth={props.auth}
@@ -384,6 +417,9 @@ export default function ChangeImage(props) {
             />
           </label>
         </div>
+        <button type="button" className="button-delete" onClick={handleDelete}>
+            Delete Ad
+          </button>
                                 {/* Other form fields */}
                                 <button type="submit" className="button">
                                     Update my ad

@@ -172,11 +172,7 @@ body {
     font-size: 14px;
     line-height: 24px;
   }
-  .container {
-    display: flex;
-    flex-direction: column; 
-    margin-left: auto; 
-  }
+  
   
   .mad{
     position: absolute; /* Set the position to absolute */

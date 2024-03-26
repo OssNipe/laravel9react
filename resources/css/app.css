@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.placeholder-text-lg::placeholder {
+    font-size: 1.125rem; /* Adjust the size of the placeholder text */
+  }
 body{
-    background-color: white;
+    background-color: #f7fafc;
 }
 ::-webkit-scrollbar{
     width: 8px;
