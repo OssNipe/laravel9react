@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import AppLayout from "@/Layouts/AppLayout";
 import ProfileCard from "@/Components/ProfileCard";
+import  Footer from '../Components/Footer'
 
 export default function TutorsList(props) {
     const [tutors, setTutors] = useState([]);
@@ -10,10 +11,10 @@ export default function TutorsList(props) {
     const [searchLocation, setSearchLocation] = useState('');
     const [searchLocationPreference, setSearchLocationPreference] = useState('');
     const [noTutorsFound, setNoTutorsFound] = useState(false);
+    const [searchLevels, setSearchLevels] = useState([]);
 
-    useEffect(() => {
-        fetchTutors();
-    }, []);
+    // Function to handle changes in lesson levels checkboxes
+    
 
     const fetchTutors = async () => {
         try {
@@ -26,17 +27,29 @@ export default function TutorsList(props) {
     };
 
     // Function to handle search
-    const handleSearch = () => {
-        const filteredTutors = allTutors.filter(tutor => { // Use allTutors for filtering
-            const lessonsMatch = tutor.lessons_taught.toLowerCase().includes(searchLessons.toLowerCase());
-            const locationMatch = tutor.location.toLowerCase().includes(searchLocation.toLowerCase());
-            const locationPrefMatch = searchLocationPreference === '' || tutor.location_preference.toLowerCase() === searchLocationPreference.toLowerCase();
-            return lessonsMatch && locationMatch && locationPrefMatch;
-        });
-        setTutors(filteredTutors);
-        setNoTutorsFound(filteredTutors.length === 0); // Set noTutorsFound state based on filteredTutors length
-    };
+    // Function to handle search
+const handleSearch = () => {
+  const filteredTutors = allTutors.filter(tutor => {
+      const lessonsMatch = tutor.lessons_taught.toLowerCase().includes(searchLessons.toLowerCase());
+      const locationMatch = tutor.location.toLowerCase().includes(searchLocation.toLowerCase());
+      const locationPrefMatch = searchLocationPreference === '' || tutor.location_preference.toLowerCase() === searchLocationPreference.toLowerCase();
+      const levelMatch = searchLevels.length === 0 || searchLevels.some(level => tutor.levels.includes(level)); // Check if any selected level matches
+      return lessonsMatch && locationMatch && locationPrefMatch && levelMatch;
+  });
+  setTutors(filteredTutors);
+  setNoTutorsFound(filteredTutors.length === 0);
+};
 
+    const handleLevelCheckboxChange = (level) => {
+      if (searchLevels.includes(level)) {
+          setSearchLevels(searchLevels.filter(item => item !== level)); // Remove level if already selected
+      } else {
+          setSearchLevels([...searchLevels, level]); // Add level if not selected
+      }
+  };
+  useEffect(() => {
+      fetchTutors();
+  }, []);
     // Function to handle reset
     const handleReset = () => {
         setSearchLessons('');
@@ -119,9 +132,40 @@ export default function TutorsList(props) {
 </div>
 <span>Level of the lessons
 </span>
+<div className="block w-[220px] rounded-md py-2 px-4 ring-1 ring-inset ring-gray-50 focus:text-gray-800 focus:ring-black focus:border-black mb-2">
+<label className="flex items-center mb-2">
+        <input
+            type="checkbox"
+            className="form-checkbox mr-2 focus:ring-black focus:border-black"
+            checked={searchLevels.includes('1_BAC')} // Change 'level1' to actual level values
+            onChange={() => handleLevelCheckboxChange('1_BAC')} // Change 'level1' to actual level values
+        />
+        1 bac
+        </label>
+        <label className="flex items-center mb-2">
 
+        <input
+            type="checkbox"
+            className="form-checkbox mr-2 focus:ring-black focus:border-black"
+            checked={searchLevels.includes('2_BAC')} // Change 'level1' to actual level values
+            onChange={() => handleLevelCheckboxChange('2_BAC')} // Change 'level1' to actual level values
+        />
+        2 bac
+        </label>
+        <label className="flex items-center mb-2">
+          
+        <input
+            type="checkbox"
+            className="form-checkbox mr-2 focus:ring-black focus:border-black"
+            checked={searchLevels.includes('LA_FAC')} // Change 'level1' to actual level values
+            onChange={() => handleLevelCheckboxChange('LA_FAC')} // Change 'level1' to actual level values
+        />
+        bac +1
+        </label>
+
+    </div>
                 <button
-                  className="cursor-pointer uppercase font-mono bg-white font-bold py-2 px-4 rounded border-2 border-black shadow-md transition-transform duration-50 hover:shadow-lg active:translate-x-0.5 active:translate-y-0.5 active:shadow-sm"
+                  className="cursor-pointer uppercase font-mono bg-white font-bold py-2 px-4 rounded border-2 border-black shadow-md transition-transform duration-50 hover:shadow-lg active:translate-x-0.5 active:translate-y-0.5 active:shadow-sm mr-5"
                   onClick={handleSearch}
                 >
                   Search
@@ -144,6 +188,7 @@ export default function TutorsList(props) {
               ) : (
                 tutors.map((tutor, index) => (
                   <ProfileCard
+                   
                     key={index}
                     name={tutor.user.name}
                     id={tutor.user_id}
@@ -163,6 +208,8 @@ export default function TutorsList(props) {
             </div>
           </div>
         </div>
+        <Footer />
+
       </AppLayout>
       
     );

@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserImageController;
 use App\Http\Controllers\TutorAdController;
 use App\Http\Controllers\AdRatingController;
+use App\Http\Controllers\TutorAvailabilityController;
 
 
 use App\Models\User; // Import the User model
@@ -40,3 +41,8 @@ Route::post('/ad_ratings', [AdRatingController::class, 'store']);
 Route::get('brother/getAdIdByUserId/{userId}', [BrotherController::class, 'getAdIdByUserId']);
 Route::get('/brother/{userId}', [BrotherController::class, 'showContent']);
 Route::delete('/brother/{id}', [BrotherController::class, 'destroy']);
+
+// Route to store tutor availability
+Route::post('/tutoravailability', [TutorAvailabilityController::class, 'store']);
+Route::get('/tutoravailability/{id}', [TutorAvailabilityController::class, 'index']);
+

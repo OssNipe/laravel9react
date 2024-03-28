@@ -1,27 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Dropdown from '@/Components/Dropdown';
 import student from '../../images/image.png';
-
+import {motion} from "framer-motion";
+import {fadeIn} from '../variants';
 const Hero = () => {
+ 
   return (
-    <div className='text-white'>
-      <div className='max-w-[1200px] mt-[-96px]  h-[800px] screen mx-auto flex flex-col lg:flex-row items-center justify-center'>
-        {/* Adjusted height using h-3/4 */}
-        <div className="w-full lg:w-1/2 text-center lg:text-left lg:mr-6">
+    <div name='home' className='w-full flex flex-col justify-between'>
+      <div className='grid md:grid-cols-2 max-w-[1240px] m-auto'>
+        <div className='flex flex-col justify-center md:items-start w-full px-2 py-8'>
+        <motion.div variants={fadeIn("up",0.1)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{once:false , amount:0.7}}
+          >
           <p className='text-[#4056A1] font-bold p-2'>
             GROWING WITH DATA ANALYTICS
           </p>
-          <h1 className='text-black md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>
-            Find Your Tutor
-          </h1>
-          <div className='flex justify-center lg:justify-start items-center'>
-            <p className='text-black md:text-5xl sm:text-4xl text-xl font-bold py-4'>
-              Search, Pick and learn
-            </p>
-          </div>
+          <h1 className='py-3 md:text-7xl sm:text-6xl text-4xl font-bold'>Find Your Tutor</h1>
+          <p className='text-2xl font-bold md:text-5xl sm:text-4xl py-4'>Search, Pick and learn</p>
           <p className='md:text-2xl text-xl font-bold text-[#4056A1]'>Online tutoring that releases potential.</p>
           <button className='bg-[#F13C20] w-[200px] rounded-md font-medium my-6 mx-auto lg:mx-0 py-3 text-black border border-3 border-black'>Get Started</button>
+          </motion.div>
+
         </div>
-        <img className='w-[650px] translate-y-[40px] translate-x-[180px] mx-auto my-4 lg:my-0' src={student} alt='/' />
+        <div className=''>
+          <motion.div variants={fadeIn("down",0.1)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{once:false , amount:0.7}}
+          >
+          <img src={student} alt="/" />
+          </motion.div>
+        </div>
       </div>
     </div>
   );

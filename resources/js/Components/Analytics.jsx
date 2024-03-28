@@ -1,24 +1,35 @@
 import React from 'react';
-import Laptop from '../../images/laptop.jpg';
+import Laptop from '../../images/bar.png';
 
 const Analytics = () => {
   return (
-    <div className='w-full bg-white py-16 px-4'>
-      <div className='max-w-[1240px] mx-auto grid md:grid-cols-2'>
-        <img className='w-[500px] mx-auto my-4' src={Laptop} alt='/' />
-        <div className='flex flex-col justify-center'>
-          <p className='text-[#00df9a] font-bold '>DATA ANALYTICS DASHBOARD</p>
-          <h1 className='md:text-4xl sm:text-3xl text-2xl font-bold py-2'>Manage Data Analytics Centrally</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
-            molestiae delectus culpa hic assumenda, voluptate reprehenderit
-            dolore autem cum ullam sed odit perspiciatis. Doloribus quos velit,
-            eveniet ex deserunt fuga?
-          </p>
-          <button className='bg-black text-[#00df9a] w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3'>Get Started</button>
+    <div className="my-24 md:px-14 px-4 max-w-screen-2xl mx-auto">
+    <div className="flex flex-col lg:flex-row justify-center items-center gap-10">
+        <div className="lg:w-1/4 flex flex-col items-center justify-center">
+            <h3 className="text-3xl text-primary font-bold w-full mb-3 text-center">Why we are better than others</h3>
+            <p className="text-base text-tariary text-center">Lorem ipsum dolanimi alias iure labore quidem, cum optio quas sed facilis tempore quam! Blanditiis ex provident tenetur perspiciatis.</p>
+        </div>
+        <div className="w-full lg:w-3/4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          {/* First Card */}
+          <div className="bg-[rgba(255,255,255,0.04)] rounded-[35px] shadow-3xl p-8 flex flex-col items-center justify-center hover:translate-y-4 transition-all duration-300 cursor-pointer">
+            <img src={Laptop} alt="" className="" />
+            <h5 className="text-2xl font-semibold text-primary px-5 text-center">Convenient study schedule</h5>
+          </div>
+          {/* Second Card */}
+          <div className="bg-[rgba(255,255,255,0.04)] rounded-[35px] shadow-3xl p-8 flex flex-col items-center justify-center hover:translate-y-4 transition-all duration-300 cursor-pointer md:mt-16">
+            <img src={Laptop} alt="" className="" />
+            <h5 className="text-2xl font-semibold text-primary px-5 text-center">Another Feature</h5>
+          </div>
+          {/* Third Card */}
+          <div className="bg-[rgba(255,255,255,0.04)] rounded-[35px] shadow-3xl p-8 flex flex-col items-center justify-center hover:translate-y-4 transition-all duration-300 cursor-pointers">
+            <img src={Laptop} alt="" className="" />
+            <h5 className="text-2xl font-semibold text-primary px-5 text-center">Third Feature</h5>
+          </div>
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

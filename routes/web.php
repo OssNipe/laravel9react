@@ -40,8 +40,8 @@ Route::get('/changeImage', function () {
 Route::get('/Tutordetails/{id}/{adId}', function ($id, $AdId) {
     return Inertia::render('Tutordetails', [
         'tutorId' => $id, // Pass the tutor's ID as a parameter
-        'ADid' => $AdId,
-        'userId' => auth()->id()
+        'ADid' => $AdId
+
     ]);
 })->name('Tutordetails');
 Route::get('/TutorComponent', function () {
@@ -73,7 +73,20 @@ Route::get('/BecomTutor', function () {
     ]);
 })->middleware(['auth', 'verified'])->name('BecomTutor');
 
+Route::get('/api/user', function () {
+    try {
+        // Check if the user is authenticated
+        if (!auth()->check()) {
+            throw new \Exception('User is not authenticated.');
+        }
 
+        // Return the authenticated user's ID as JSON
+        return response()->json(['id' => auth()->id()]);
+    } catch (\Exception $e) {
+        // Handle any exceptions and return an error response
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
+})->middleware('auth');
 Route::middleware('auth')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

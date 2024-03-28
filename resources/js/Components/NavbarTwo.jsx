@@ -5,16 +5,28 @@ import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faChartBar, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import ImageUploadAndDisplayComponent from './ImageUploadAndDisplayComponent'; // Import the image component
-function Navbar(props) {
+function Navbar() {
   const [imagePath, setImagePath] = useState('');
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
+      fetch('/api/user')
+          .then(response => response.json())
+          .then(data => {
+              const userIdFromApi = data.id;
+              setUserId(userIdFromApi);
+          })
+          .catch(error => {
+              console.error('Error fetching user ID:', error);
+          });
+  }, []);
+  useEffect(() => {
     fetchImage();
-  }, [props.userId]);
+  }, [userId]);
 
   const fetchImage = async () => {
     try {
-      const response = await axios.get(`/api/user_images/${props.userId}`);
+      const response = await axios.get(`/api/user_images/${userId}`);
       setImagePath(`/storage/${response.data.image_path}`);
     } catch (error) {
       console.error('Error fetching image:', error);
@@ -39,7 +51,7 @@ function Navbar(props) {
   </ul>
 
   <ul className='hidden md:flex'>
-    {props.auth.user ? (
+  {userId !== null ? (
       <li className='p-4 text-black'> 
         <Dropdown>
           <Dropdown.Trigger>
@@ -55,8 +67,8 @@ function Navbar(props) {
                 <img src={imagePath} alt="User Logo" className="logo-image w-full h-full object-cover rounded-full" />
               </div>
               <div>
-                <p className="text-gray-700 font-bold text-[13px] translate-y-[-2px] translate-x-[-45px]">{props.auth.user.name}</p>
-                <p className="text-gray-500 text-[10px] translate-y-[-7px] translate-x-[-45px] mt-0">{props.auth.user.email}</p>
+                <p className="text-gray-700 font-bold text-[13px] translate-y-[-2px] translate-x-[-45px]"></p>
+                <p className="text-gray-500 text-[10px] translate-y-[-7px] translate-x-[-45px] mt-0"></p>
               </div>  
             </div>
             <div className='bg-gray-50'>
@@ -107,7 +119,7 @@ function Navbar(props) {
         <li className='p-4 text-black border-b border-gray-600'><Link href={route('BecomTutor')}>Become a tutor</Link></li>
     
       
-{props.auth.user ? (   <li className='p-4 '> 
+        {userId !== null ?(   <li className='p-4 '> 
                                 <Dropdown>
                                     <Dropdown.Trigger>
                                         <span >
@@ -115,7 +127,7 @@ function Navbar(props) {
                                                 type="button"
                                                
                                             >
-                                                {props.auth.user.name}
+                                                
 
                                                
                                             </button>

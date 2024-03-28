@@ -14,7 +14,7 @@ class BrotherController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(Request $request)
     {
         $tutors = Brother::with('user:id,name')->select('id', 'advert_title', 'lessons_taught', 'about_lessons', 'about_you', 'location', 'location_preference', 'levels', 'hourly_rate', 'PhoneNumber', 'user_id')->get();
 
@@ -23,8 +23,18 @@ class BrotherController extends Controller
             $tutor->user->image_path = $userImage ? $userImage->image_path : null;
         }
 
+        // Filter tutors based on selected lesson levels
+        if ($request->has('searchLevels')) {
+            $selectedLevels = $request->input('searchLevels');
+            $tutors = $tutors->filter(function ($tutor) use ($selectedLevels) {
+                return collect(explode(',', $tutor->levels))->intersect($selectedLevels)->isNotEmpty();
+            });
+        }
+
         return $tutors;
     }
+
+
 
     /**
      * Show the form for creating a new resource.

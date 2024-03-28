@@ -3,6 +3,7 @@ import AppLayout from '@/Layouts/AppLayout';
 import "../../css/FormComponent.css";
 import axios from "axios";
 import { Link } from "@inertiajs/react";
+import  Footer from '../Components/Footer'
 
 const CreateTutorAdForm = (props ) =>  {
   const [formData, setFormData] = useState({
@@ -100,25 +101,16 @@ const CreateTutorAdForm = (props ) =>  {
     };
     
     
-    const handleScheduleChange = (day, time, isChecked) => {
-      setSchedule((prevSchedule) => {
-        const updatedDay = isChecked
-          ? [...prevSchedule[day], time]
-          : prevSchedule[day].filter((t) => t !== time);
-    
-        return {
-          ...prevSchedule,
-          [day]: updatedDay,
-        };
-      });
-    };
+   
     
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('api/brother', formData);
       console.log(response.data.message);
-      <Link href={route('TutorComponent')}></Link>
+      const availabilityResponse = await axios.post('api/tutoravailability', { user_id: props.userId, schedule });
+      console.log(availabilityResponse.data.message);
+
     } catch (error) {
       console.error("Error creating tutor ad:", error);
     }
@@ -146,9 +138,33 @@ const CreateTutorAdForm = (props ) =>  {
   const filteredSubjects = subjects.filter(subject =>
     subject.toLowerCase().includes(formData.lessons_taught.toLowerCase())
   );
+  const [schedule, setSchedule] = useState({
+    Monday: [],
+    Tuesday: [],
+    Wednesday: [],
+    Thursday: [],
+    Friday: [],
+    Saturday: [],
+    Sunday: [],
+  });
+
+  // Function to handle schedule change
+  const handleScheduleChange = (day, time, isChecked) => {
+    setSchedule((prevSchedule) => {
+      const updatedDay = isChecked
+        ? [...prevSchedule[day], time] // Add the time slot if checked
+        : prevSchedule[day].filter((t) => t !== time); // Remove the time slot if unchecked
+
+      return {
+        ...prevSchedule,
+        [day]: updatedDay,
+      };
+    });
+  };
   return (
     <AppLayout {...props}>
-      <div className="container">
+     <div class="flex justify-center items-center mt-10">
+  
         <form className="form-container" onSubmit={handleSubmit}>
           <h4>Complete your information</h4>
           <p>Briefly tell potential students what you teach and what your lessons are like:</p>
@@ -291,6 +307,44 @@ const CreateTutorAdForm = (props ) =>  {
     </ul>
   </label>
 </div>
+{/* Schedule selection */}
+
+<div className="schedule-selection">
+  <h4 className="mb-4">Select your availability:</h4>
+  <div className="overflow-x-auto">
+    <table className="border-collapse border border-gray-400 w-full">
+      <thead>
+        <tr>
+          <th className="border border-gray-400 w-24"></th>
+          {['8-10', '10-12', '2-4', '4-6'].map((time) => (
+            <th key={time} className="border border-gray-400 p-2 w-32">{time}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {Object.entries(schedule).map(([day, timeSlots]) => (
+          <tr key={day}>
+            <td className="border border-gray-400 p-2 font-bold">{day}</td>
+            {['8-10', '10-12', '2-4', '4-6'].map((time) => (
+              <td key={time} className="border border-gray-400 p-2">
+                <div className="flex justify-center items-center">
+                  <input
+                    type="checkbox"
+                    checked={timeSlots.includes(time)}
+                    onChange={(e) => handleScheduleChange(day, time, e.target.checked)}
+                    className="form-checkbox h-5 w-5"
+                  />
+                </div>
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
 <div className="form-row">
   <label className="label">
   <span>Levels:</span>
@@ -366,6 +420,8 @@ const CreateTutorAdForm = (props ) =>  {
     </form>
       
     </div>
+   
+    <Footer/>          
     </AppLayout>
   );
 };
